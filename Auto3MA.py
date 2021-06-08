@@ -8,6 +8,7 @@ secret = "3hkxepxaNw7mxQe5IxS2TsYKUZMHIwS9YHJTmlyl"
 
 # Login
 upbit = pyupbit.Upbit(access, secret)
+print("autotrade start")
 
 # Target Calculate Function Defined
 def cal_target(ticker):
@@ -251,14 +252,14 @@ while True:
           
         #print(f"{now} B_P: {BTC_price} B_T: {BTC_target} E_P: {ETH_price} E_T: {ETH_target} A_P: {ADA_price} A_T: {ADA_target} D_P: {DOGE_price} D_T: {DOGE_target} M_P: {MANA_price} M_T: {MANA_target}")
 
-        print(f"{now.second} BTC: {BTC_price} {BTC_target} {BTC_ma3} {BTC_hold} / ETH: {ETH_price} {ETH_target} {ETH_ma3} {ETH_hold} / ADA: {ADA_price} {ADA_target} {ADA_ma3} {ADA_hold} / DOGE: {DOGE_price} {DOGE_target} {DOGE_ma3} {DOGE_hold} / MANA: {MANA_price} {MANA_target} {MANA_ma3} {MANA_hold}")
+        #print(f"{now.second} BTC: {BTC_price} {BTC_target} {BTC_ma3} {BTC_hold} / ETH: {ETH_price} {ETH_target} {ETH_ma3} {ETH_hold} / ADA: {ADA_price} {ADA_target} {ADA_ma3} {ADA_hold} / DOGE: {DOGE_price} {DOGE_target} {DOGE_ma3} {DOGE_hold} / MANA: {MANA_price} {MANA_target} {MANA_ma3} {MANA_hold}")
         
         
         #print(f"Time: {now} BTC_ma3: {BTC_ma3} ETH_ma3: {ETH_ma3} ADA_ma3: {ADA_ma3} DOGE_ma3: {DOGE_ma3} MANA_ma3: {MANA_ma3}")        
         
         #print(f"KRW Balance: {KRW_balance} KRW DIV Balance: {KRW_balance_div}")
 
-        # 1초 Delay
+        # 1sec Delay
         time.sleep(1)
 
 
