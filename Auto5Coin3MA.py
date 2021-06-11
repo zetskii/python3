@@ -6,9 +6,14 @@ import datetime
 access = "MpxoZr3htLZV2IIpCt6JIbDKwfxzEadosCGQ6bzt"
 secret = "3hkxepxaNw7mxQe5IxS2TsYKUZMHIwS9YHJTmlyl"
 
+
+# Now Time
+now = datetime.datetime.now()
+
 # Login
 upbit = pyupbit.Upbit(access, secret)
-print("autotrade start")
+
+print(f"{now} Login ... OK")
 
 # Target1 Calculate Function Defined
 def cal_target1(ticker):
@@ -41,17 +46,27 @@ ADA_target1 = cal_target1("KRW-ADA")
 DOGE_target1 = cal_target1("KRW-DOGE")
 MANA_target1 = cal_target1("KRW-MANA")
 
+print(f"{now} Target1 Initialized ... OK")
+time.sleep(1)
+
 BTC_target2 = cal_target2("KRW-BTC")
 ETH_target2 = cal_target2("KRW-ETH")
 ADA_target2 = cal_target2("KRW-ADA")
 DOGE_target2 = cal_target2("KRW-DOGE")
 MANA_target2 = cal_target2("KRW-MANA")
 
+print(f"{now} Target2 Initialized ... OK")
+time.sleep(1)
+
 BTC_ma3 = get_ma3("KRW-BTC")
 ETH_ma3 = get_ma3("KRW-ETH")
 ADA_ma3 = get_ma3("KRW-ADA")
 DOGE_ma3 = get_ma3("KRW-DOGE")
 MANA_ma3 = get_ma3("KRW-MANA")
+
+print(f"{now} MA3 Initialized ... OK")
+time.sleep(1)
+print(f"{now} Auto Trade Mode Start ... OK")
 
 op_mode = False
 
@@ -62,7 +77,7 @@ DOGE_hold = False
 MANA_hold = False
 
 
-# Auto Trade Start
+# Auto Trade Mode Start
 while True:
 
     try:
@@ -78,11 +93,17 @@ while True:
             DOGE_target1 = cal_target1("KRW-DOGE")
             MANA_target1 = cal_target1("KRW-MANA")
 
+            print(f"{now} Today Target1 Update ... OK")
+            time.sleep(1)
+
             BTC_target2 = cal_target2("KRW-BTC")
             ETH_target2 = cal_target2("KRW-ETH")
             ADA_target2 = cal_target2("KRW-ADA")
             DOGE_target2 = cal_target2("KRW-DOGE")
             MANA_target2 = cal_target2("KRW-MANA")
+
+            print(f"{now} Today Target2 Update ... OK")
+            time.sleep(1)
 
             BTC_ma3 = get_ma3("KRW-BTC")
             ETH_ma3 = get_ma3("KRW-ETH")
@@ -90,10 +111,11 @@ while True:
             DOGE_ma3 = get_ma3("KRW-DOGE")
             MANA_ma3 = get_ma3("KRW-MANA")
 
+            print(f"{now} Today MA3 Update ... OK")
             op_mode = True
             time.sleep(10)      
-              
-    
+
+
         # Now Price (every 1sec)
         BTC_price = pyupbit.get_current_price("KRW-BTC")
         ETH_price = pyupbit.get_current_price("KRW-ETH")
@@ -215,36 +237,36 @@ while True:
 
 
 
-    
+
         # BTC _ Market Price Buy (every 1sec)
         if op_mode is True and BTC_price is not None and (BTC_target1 <= BTC_price <= BTC_target2) and BTC_hold is False and BTC_price >= BTC_ma3:
             upbit.buy_market_order("KRW-BTC", KRW_balance_div * 0.9995)
-            print("BTC Buy Success")
+            print(f"{now} Today BTC Buy ... OK")
             BTC_hold = True
-            
+
 
         # ETH _ Market Price Buy (every 1sec)
         if op_mode is True and ETH_price is not None and (ETH_target1 <= ETH_price <= ETH_target2) and ETH_hold is False and ETH_price >= ETH_ma3:
            upbit.buy_market_order("KRW-ETH", KRW_balance_div * 0.9995)
-           print("ETH Buy Success")
+           print(f"{now} Today ETH Buy ... OK")
            ETH_hold = True
 
         # ADA _ Market Price Buy (every 1sec)
         if op_mode is True and ADA_price is not None and (ADA_target1 <= ADA_price <= ADA_target2) and ADA_hold is False and ADA_price >= ADA_ma3:
             upbit.buy_market_order("KRW-ADA", KRW_balance_div * 0.9995)
-            print("ADA Buy Success")
+            print(f"{now} Today ADA Buy ... OK")
             ADA_hold = True
 
         # DOGE _ Market Price Buy (every 1sec)
         if op_mode is True and DOGE_price is not None and (DOGE_target1 <= DOGE_price <= DOGE_target2) and DOGE_hold is False and DOGE_price >= DOGE_ma3:
             upbit.buy_market_order("KRW-DOGE", KRW_balance_div * 0.9995)
-            print("DOGE Buy Success")
+            print(f"{now} Today DOGE Buy ... OK")
             DOGE_hold = True
 
         # MANA _ Market Price Buy (every 1sec)
         if op_mode is True and MANA_price is not None and (MANA_target1 <= MANA_price <= MANA_target2) and MANA_hold is False and MANA_price >= MANA_ma3:
             upbit.buy_market_order("KRW-MANA", KRW_balance_div * 0.9995)
-            print("MANA Buy Success")
+            print(f"{now} Today MANA Buy ... OK")
             MANA_hold = True
 
 
@@ -255,31 +277,31 @@ while True:
             if op_mode is True and BTC_hold is True:
                 btc_balance = upbit.get_balance("KRW-BTC")
                 upbit.sell_market_order("KRW-BTC", btc_balance * 0.9995)
-                print("BTC Sell Success")
+                print(f"{now} Today BTC Sell ... OK")
                 BTC_hold = False
 
             if op_mode is True and ETH_hold is True:
                 eth_balance = upbit.get_balance("KRW-ETH")
                 upbit.sell_market_order("KRW-ETH", eth_balance * 0.9995)
-                print("ETH Sell Success")
+                print(f"{now} Today ETH Sell ... OK")
                 ETH_hold = False
 
             if op_mode is True and ADA_hold is True:
                 ada_balance = upbit.get_balance("KRW-ADA")
                 upbit.sell_market_order("KRW-ADA", ada_balance * 0.9995)
-                print("ADA Sell Success")
+                print(f"{now} Today ADA Sell ... OK")
                 ADA_hold = False
 
             if op_mode is True and DOGE_hold is True:
                 doge_balance = upbit.get_balance("KRW-DOGE")
                 upbit.sell_market_order("KRW-DOGE", doge_balance * 0.9995)
-                print("DOGE Sell Success")
+                print(f"{now} Today DOGE Sell ... OK")
                 DOGE_hold = False
 
             if op_mode is True and MANA_hold is True:
                 mana_balance = upbit.get_balance("KRW-MANA")
                 upbit.sell_market_order("KRW-MANA", mana_balance * 0.9995)
-                print("MANA Sell Success")
+                print(f"{now} Today MANA Sell ... OK")
                 MANA_hold = False
 
             op_mode = False
@@ -287,8 +309,8 @@ while True:
 
 
         # print message (every 1sec)
-        #print(f"{now} B_P: {BTC_price} B_T: {BTC_target} E_P: {ETH_price} E_T: {ETH_target} A_P: {ADA_price} A_T: {ADA_target} D_P: {DOGE_price} D_T: {DOGE_target} M_P: {MANA_price} M_T: {MANA_target}")
-        #print(f"{now.second} BTC: {BTC_price} {BTC_target} {BTC_ma3} {BTC_hold} / ETH: {ETH_price} {ETH_target} {ETH_ma3} {ETH_hold} / ADA: {ADA_price} {ADA_target} {ADA_ma3} {ADA_hold} / DOGE: {DOGE_price} {DOGE_target} {DOGE_ma3} {DOGE_hold} / MANA: {MANA_price} {MANA_target} {MANA_ma3} {MANA_hold}")
+        #print(f"{now} B_P: {BTC_price} B_T: {BTC_target1} E_P: {ETH_price} E_T: {ETH_target1} A_P: {ADA_price} A_T: {ADA_target1} D_P: {DOGE_price} D_T: {DOGE_target1} M_P: {MANA_price} M_T: {MANA_target1}")
+        #print(f"{now.second} BTC: {BTC_price} {BTC_target1} {BTC_ma3} {BTC_hold} / ETH: {ETH_price} {ETH_target1} {ETH_ma3} {ETH_hold} / ADA: {ADA_price} {ADA_target1} {ADA_ma3} {ADA_hold} / DOGE: {DOGE_price} {DOGE_target1} {DOGE_ma3} {DOGE_hold} / MANA: {MANA_price} {MANA_target1} {MANA_ma3} {MANA_hold}")
         #print(f"Time: {now} BTC_ma3: {BTC_ma3} ETH_ma3: {ETH_ma3} ADA_ma3: {ADA_ma3} DOGE_ma3: {DOGE_ma3} MANA_ma3: {MANA_ma3}")        
         #print(f"KRW Balance: {KRW_balance} KRW DIV Balance: {KRW_balance_div}")
 
