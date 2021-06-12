@@ -49,7 +49,7 @@ TRX_target1 = cal_target1("KRW-TRX")
 MANA_target1 = cal_target1("KRW-MANA")
 
 print(f"Target1 Initialized ... OK")
-print(f"BTC_Target1: {BTC_target1} / ETH_Target1: {ETH_target1} / ADA_Target1: {ADA_target1} / TRX_Target1: {TRX_target1} / MANA_Target1: {MANA_target1}")
+print(f"BTC_Target1: {BTC_target1:.1f} / ETH_Target1: {ETH_target1:.1f} / ADA_Target1: {ADA_target1:.1f} / TRX_Target1: {TRX_target1:.1f} / MANA_Target1: {MANA_target1:.1f}")
 print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 time.sleep(1)
 
@@ -60,7 +60,7 @@ TRX_target2 = cal_target2("KRW-TRX")
 MANA_target2 = cal_target2("KRW-MANA")
 
 print(f"Target2 Initialized ... OK")
-print(f"BTC_Target2: {BTC_target2} / ETH_Target2: {ETH_target2} / ADA_Target2: {ADA_target2} / TRX_Target2: {TRX_target2} / MANA_Target2: {MANA_target2}")
+print(f"BTC_Target2: {BTC_target2:.1f} / ETH_Target2: {ETH_target2:.1f} / ADA_Target2: {ADA_target2:.1f} / TRX_Target2: {TRX_target2:.1f} / MANA_Target2: {MANA_target2:.1f}")
 print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 time.sleep(1)
 
@@ -71,7 +71,7 @@ TRX_ma3 = get_ma3("KRW-TRX")
 MANA_ma3 = get_ma3("KRW-MANA")
 
 print(f"MA3 Initialized ... OK")
-print(f"BTC_ma3: {BTC_ma3} / ETH_ma3: {ETH_ma3} / ADA_ma3: {ADA_ma3} / TRX_ma3: {TRX_ma3} / MANA_ma3: {MANA_ma3}")
+print(f"BTC_ma3: {BTC_ma3:.1f} / ETH_ma3: {ETH_ma3:.1f} / ADA_ma3: {ADA_ma3:.1f} / TRX_ma3: {TRX_ma3:.1f} / MANA_ma3: {MANA_ma3:.1f}")
 print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 time.sleep(1)
 print(f"Auto Trade Mode Start ... OK")
@@ -103,7 +103,7 @@ while True:
             MANA_target1 = cal_target1("KRW-MANA")
 
             print(f"{now} Today Target1 Update ... OK")
-            print(f"BTC_Target1: {BTC_target1} / ETH_Target1: {ETH_target1} / ADA_Target1: {ADA_target1} / TRX_Target1: {TRX_target1} / MANA_Target1: {MANA_target1}")
+            print(f"BTC_Target1: {BTC_target1:.1f} / ETH_Target1: {ETH_target1:.1f} / ADA_Target1: {ADA_target1:.1f} / TRX_Target1: {TRX_target1:.1f} / MANA_Target1: {MANA_target1:.1f}")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             time.sleep(1)
 
@@ -114,7 +114,7 @@ while True:
             MANA_target2 = cal_target2("KRW-MANA")
 
             print(f"{now} Today Target2 Update ... OK")
-            print(f"BTC_Target2: {BTC_target2} / ETH_Target2: {ETH_target2} / ADA_Target2: {ADA_target2} / TRX_Target2: {TRX_target2} / MANA_Target2: {MANA_target2}")
+            print(f"BTC_Target2: {BTC_target2:.1f} / ETH_Target2: {ETH_target2:.1f} / ADA_Target2: {ADA_target2:.1f} / TRX_Target2: {TRX_target2:.1f} / MANA_Target2: {MANA_target2:.1f}")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             time.sleep(1)
 
@@ -125,7 +125,7 @@ while True:
             MANA_ma3 = get_ma3("KRW-MANA")
 
             print(f"{now} Today MA3 Update ... OK")
-            print(f"BTC_ma3: {BTC_ma3} / ETH_ma3: {ETH_ma3} / ADA_ma3: {ADA_ma3} / TRX_ma3: {TRX_ma3} / MANA_ma3: {MANA_ma3}")
+            print(f"BTC_ma3: {BTC_ma3:.1f} / ETH_ma3: {ETH_ma3:.1f} / ADA_ma3: {ADA_ma3:.1f} / TRX_ma3: {TRX_ma3:.1f} / MANA_ma3: {MANA_ma3:.1f}")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             op_mode = True
             time.sleep(10)      
