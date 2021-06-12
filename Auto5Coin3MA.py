@@ -13,7 +13,9 @@ now = datetime.datetime.now()
 # Login
 upbit = pyupbit.Upbit(access, secret)
 
+print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 print(f"{now} Login ... OK")
+print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 
 # Target1 Calculate Function Defined
 def cal_target1(ticker):
@@ -43,37 +45,44 @@ def get_ma3(ticker):
 BTC_target1 = cal_target1("KRW-BTC")
 ETH_target1 = cal_target1("KRW-ETH")
 ADA_target1 = cal_target1("KRW-ADA")
-DOGE_target1 = cal_target1("KRW-DOGE")
+TRX_target1 = cal_target1("KRW-TRX")
 MANA_target1 = cal_target1("KRW-MANA")
 
-print(f"{now} Target1 Initialized ... OK")
+print(f"Target1 Initialized ... OK")
+print(f"BTC_Target1: {BTC_target1} / ETH_Target1: {ETH_target1} / ADA_Target1: {ADA_target1} / TRX_Target1: {TRX_target1} / MANA_Target1: {MANA_target1}")
+print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 time.sleep(1)
 
 BTC_target2 = cal_target2("KRW-BTC")
 ETH_target2 = cal_target2("KRW-ETH")
 ADA_target2 = cal_target2("KRW-ADA")
-DOGE_target2 = cal_target2("KRW-DOGE")
+TRX_target2 = cal_target2("KRW-TRX")
 MANA_target2 = cal_target2("KRW-MANA")
 
-print(f"{now} Target2 Initialized ... OK")
+print(f"Target2 Initialized ... OK")
+print(f"BTC_Target2: {BTC_target2} / ETH_Target2: {ETH_target2} / ADA_Target2: {ADA_target2} / TRX_Target2: {TRX_target2} / MANA_Target2: {MANA_target2}")
+print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 time.sleep(1)
 
 BTC_ma3 = get_ma3("KRW-BTC")
 ETH_ma3 = get_ma3("KRW-ETH")
 ADA_ma3 = get_ma3("KRW-ADA")
-DOGE_ma3 = get_ma3("KRW-DOGE")
+TRX_ma3 = get_ma3("KRW-TRX")
 MANA_ma3 = get_ma3("KRW-MANA")
 
-print(f"{now} MA3 Initialized ... OK")
+print(f"MA3 Initialized ... OK")
+print(f"BTC_ma3: {BTC_ma3} / ETH_ma3: {ETH_ma3} / ADA_ma3: {ADA_ma3} / TRX_ma3: {TRX_ma3} / MANA_ma3: {MANA_ma3}")
+print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 time.sleep(1)
-print(f"{now} Auto Trade Mode Start ... OK")
+print(f"Auto Trade Mode Start ... OK")
+print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 
 op_mode = False
 
 BTC_hold = False
 ETH_hold = False
 ADA_hold = False
-DOGE_hold = False
+TRX_hold = False
 MANA_hold = False
 
 
@@ -90,28 +99,34 @@ while True:
             BTC_target1 = cal_target1("KRW-BTC")
             ETH_target1 = cal_target1("KRW-ETH")
             ADA_target1 = cal_target1("KRW-ADA")
-            DOGE_target1 = cal_target1("KRW-DOGE")
+            TRX_target1 = cal_target1("KRW-TRX")
             MANA_target1 = cal_target1("KRW-MANA")
 
             print(f"{now} Today Target1 Update ... OK")
+            print(f"BTC_Target1: {BTC_target1} / ETH_Target1: {ETH_target1} / ADA_Target1: {ADA_target1} / TRX_Target1: {TRX_target1} / MANA_Target1: {MANA_target1}")
+            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             time.sleep(1)
 
             BTC_target2 = cal_target2("KRW-BTC")
             ETH_target2 = cal_target2("KRW-ETH")
             ADA_target2 = cal_target2("KRW-ADA")
-            DOGE_target2 = cal_target2("KRW-DOGE")
+            TRX_target2 = cal_target2("KRW-TRX")
             MANA_target2 = cal_target2("KRW-MANA")
 
             print(f"{now} Today Target2 Update ... OK")
+            print(f"BTC_Target2: {BTC_target2} / ETH_Target2: {ETH_target2} / ADA_Target2: {ADA_target2} / TRX_Target2: {TRX_target2} / MANA_Target2: {MANA_target2}")
+            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             time.sleep(1)
 
             BTC_ma3 = get_ma3("KRW-BTC")
             ETH_ma3 = get_ma3("KRW-ETH")
             ADA_ma3 = get_ma3("KRW-ADA")
-            DOGE_ma3 = get_ma3("KRW-DOGE")
+            TRX_ma3 = get_ma3("KRW-TRX")
             MANA_ma3 = get_ma3("KRW-MANA")
 
             print(f"{now} Today MA3 Update ... OK")
+            print(f"BTC_ma3: {BTC_ma3} / ETH_ma3: {ETH_ma3} / ADA_ma3: {ADA_ma3} / TRX_ma3: {TRX_ma3} / MANA_ma3: {MANA_ma3}")
+            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             op_mode = True
             time.sleep(10)      
 
@@ -120,114 +135,114 @@ while True:
         BTC_price = pyupbit.get_current_price("KRW-BTC")
         ETH_price = pyupbit.get_current_price("KRW-ETH")
         ADA_price = pyupbit.get_current_price("KRW-ADA")
-        DOGE_price = pyupbit.get_current_price("KRW-DOGE")
+        TRX_price = pyupbit.get_current_price("KRW-TRX")
         MANA_price = pyupbit.get_current_price("KRW-MANA")
 
 
 
         # KRW balace -> Divide (every 1sec)
 
-        if BTC_hold is False and ETH_hold is False and ADA_hold is False and DOGE_hold is False and MANA_hold is False:
+        if BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 5
 
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and DOGE_hold is False and MANA_hold is True:
+        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 4
 
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and DOGE_hold is True and MANA_hold is False:
+        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is True and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 4
 
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and DOGE_hold is False and MANA_hold is False:
+        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and TRX_hold is False and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 4
 
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and DOGE_hold is False and MANA_hold is False:
+        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and TRX_hold is False and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 4
 
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and DOGE_hold is False and MANA_hold is False:
+        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 4
 
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and DOGE_hold is True and MANA_hold is True:
+        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is True and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and DOGE_hold is False and MANA_hold is True:
+        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and TRX_hold is False and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and DOGE_hold is True and MANA_hold is False:
+        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and TRX_hold is True and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and DOGE_hold is False and MANA_hold is True:
+        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and TRX_hold is False and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and DOGE_hold is True and MANA_hold is False:
+        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and TRX_hold is True and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and DOGE_hold is False and MANA_hold is False:
+        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and TRX_hold is False and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and DOGE_hold is False and MANA_hold is True:
+        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and DOGE_hold is True and MANA_hold is False:
+        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and TRX_hold is True and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and DOGE_hold is False and MANA_hold is False:
+        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and TRX_hold is False and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and DOGE_hold is False and MANA_hold is False:
+        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and TRX_hold is False and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 3
 
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and DOGE_hold is True and MANA_hold is True:
+        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and TRX_hold is True and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and DOGE_hold is True and MANA_hold is True:
+        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and TRX_hold is True and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and DOGE_hold is False and MANA_hold is True:
+        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and TRX_hold is False and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and DOGE_hold is True and MANA_hold is False:
+        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and TRX_hold is True and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and DOGE_hold is True and MANA_hold is True:
+        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and TRX_hold is True and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and DOGE_hold is False and MANA_hold is True:
+        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and TRX_hold is False and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and DOGE_hold is True and MANA_hold is False:
+        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and TRX_hold is True and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and DOGE_hold is False and MANA_hold is True:
+        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and TRX_hold is False and MANA_hold is True:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and DOGE_hold is True and MANA_hold is False:
+        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and TRX_hold is True and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
-        elif BTC_hold is True and ETH_hold is True and ADA_hold is True and DOGE_hold is False and MANA_hold is False:
+        elif BTC_hold is True and ETH_hold is True and ADA_hold is True and TRX_hold is False and MANA_hold is False:
             KRW_balance = upbit.get_balance("KRW")
             KRW_balance_div = KRW_balance / 2
 
@@ -242,6 +257,7 @@ while True:
         if op_mode is True and BTC_price is not None and (BTC_target1 <= BTC_price <= BTC_target2) and BTC_hold is False and BTC_price >= BTC_ma3:
             upbit.buy_market_order("KRW-BTC", KRW_balance_div * 0.9995)
             print(f"{now} Today BTC Buy ... OK")
+            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             BTC_hold = True
 
 
@@ -249,24 +265,28 @@ while True:
         if op_mode is True and ETH_price is not None and (ETH_target1 <= ETH_price <= ETH_target2) and ETH_hold is False and ETH_price >= ETH_ma3:
            upbit.buy_market_order("KRW-ETH", KRW_balance_div * 0.9995)
            print(f"{now} Today ETH Buy ... OK")
+           print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
            ETH_hold = True
 
         # ADA _ Market Price Buy (every 1sec)
         if op_mode is True and ADA_price is not None and (ADA_target1 <= ADA_price <= ADA_target2) and ADA_hold is False and ADA_price >= ADA_ma3:
             upbit.buy_market_order("KRW-ADA", KRW_balance_div * 0.9995)
             print(f"{now} Today ADA Buy ... OK")
+            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             ADA_hold = True
 
-        # DOGE _ Market Price Buy (every 1sec)
-        if op_mode is True and DOGE_price is not None and (DOGE_target1 <= DOGE_price <= DOGE_target2) and DOGE_hold is False and DOGE_price >= DOGE_ma3:
-            upbit.buy_market_order("KRW-DOGE", KRW_balance_div * 0.9995)
-            print(f"{now} Today DOGE Buy ... OK")
-            DOGE_hold = True
+        # TRX _ Market Price Buy (every 1sec)
+        if op_mode is True and TRX_price is not None and (TRX_target1 <= TRX_price <= TRX_target2) and TRX_hold is False and TRX_price >= TRX_ma3:
+            upbit.buy_market_order("KRW-TRX", KRW_balance_div * 0.9995)
+            print(f"{now} Today TRX Buy ... OK")
+            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
+            TRX_hold = True
 
         # MANA _ Market Price Buy (every 1sec)
         if op_mode is True and MANA_price is not None and (MANA_target1 <= MANA_price <= MANA_target2) and MANA_hold is False and MANA_price >= MANA_ma3:
             upbit.buy_market_order("KRW-MANA", KRW_balance_div * 0.9995)
             print(f"{now} Today MANA Buy ... OK")
+            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             MANA_hold = True
 
 
@@ -278,30 +298,35 @@ while True:
                 btc_balance = upbit.get_balance("KRW-BTC")
                 upbit.sell_market_order("KRW-BTC", btc_balance * 0.9995)
                 print(f"{now} Today BTC Sell ... OK")
+                print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
                 BTC_hold = False
 
             if op_mode is True and ETH_hold is True:
                 eth_balance = upbit.get_balance("KRW-ETH")
                 upbit.sell_market_order("KRW-ETH", eth_balance * 0.9995)
                 print(f"{now} Today ETH Sell ... OK")
+                print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
                 ETH_hold = False
 
             if op_mode is True and ADA_hold is True:
                 ada_balance = upbit.get_balance("KRW-ADA")
                 upbit.sell_market_order("KRW-ADA", ada_balance * 0.9995)
                 print(f"{now} Today ADA Sell ... OK")
+                print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
                 ADA_hold = False
 
-            if op_mode is True and DOGE_hold is True:
-                doge_balance = upbit.get_balance("KRW-DOGE")
-                upbit.sell_market_order("KRW-DOGE", doge_balance * 0.9995)
-                print(f"{now} Today DOGE Sell ... OK")
-                DOGE_hold = False
+            if op_mode is True and TRX_hold is True:
+                trx_balance = upbit.get_balance("KRW-TRX")
+                upbit.sell_market_order("KRW-TRX", trx_balance * 0.9995)
+                print(f"{now} Today TRX Sell ... OK")
+                print("------------------------------------------------------------------------------------------------------------------------------------------------------")
+                TRX_hold = False
 
             if op_mode is True and MANA_hold is True:
                 mana_balance = upbit.get_balance("KRW-MANA")
                 upbit.sell_market_order("KRW-MANA", mana_balance * 0.9995)
                 print(f"{now} Today MANA Sell ... OK")
+                print("------------------------------------------------------------------------------------------------------------------------------------------------------")
                 MANA_hold = False
 
             op_mode = False
@@ -309,9 +334,9 @@ while True:
 
 
         # print message (every 1sec)
-        #print(f"{now} B_P: {BTC_price} B_T: {BTC_target1} E_P: {ETH_price} E_T: {ETH_target1} A_P: {ADA_price} A_T: {ADA_target1} D_P: {DOGE_price} D_T: {DOGE_target1} M_P: {MANA_price} M_T: {MANA_target1}")
-        #print(f"{now.second} BTC: {BTC_price} {BTC_target1} {BTC_ma3} {BTC_hold} / ETH: {ETH_price} {ETH_target1} {ETH_ma3} {ETH_hold} / ADA: {ADA_price} {ADA_target1} {ADA_ma3} {ADA_hold} / DOGE: {DOGE_price} {DOGE_target1} {DOGE_ma3} {DOGE_hold} / MANA: {MANA_price} {MANA_target1} {MANA_ma3} {MANA_hold}")
-        #print(f"Time: {now} BTC_ma3: {BTC_ma3} ETH_ma3: {ETH_ma3} ADA_ma3: {ADA_ma3} DOGE_ma3: {DOGE_ma3} MANA_ma3: {MANA_ma3}")        
+        #print(f"{now} B_P: {BTC_price} B_T: {BTC_target1} E_P: {ETH_price} E_T: {ETH_target1} A_P: {ADA_price} A_T: {ADA_target1} D_P: {TRX_price} D_T: {TRX_target1} M_P: {MANA_price} M_T: {MANA_target1}")
+        #print(f"{now.second} BTC: {BTC_price} {BTC_target1} {BTC_ma3} {BTC_hold} / ETH: {ETH_price} {ETH_target1} {ETH_ma3} {ETH_hold} / ADA: {ADA_price} {ADA_target1} {ADA_ma3} {ADA_hold} / TRX: {TRX_price} {TRX_target1} {TRX_ma3} {TRX_hold} / MANA: {MANA_price} {MANA_target1} {MANA_ma3} {MANA_hold}")
+        #print(f"Time: {now} BTC_ma3: {BTC_ma3} ETH_ma3: {ETH_ma3} ADA_ma3: {ADA_ma3} TRX_ma3: {TRX_ma3} MANA_ma3: {MANA_ma3}")        
         #print(f"KRW Balance: {KRW_balance} KRW DIV Balance: {KRW_balance_div}")
 
         # 1sec Delay
