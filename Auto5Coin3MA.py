@@ -74,6 +74,15 @@ print(f"MA3 Initialized ... OK")
 print(f"BTC_ma3: {BTC_ma3:.1f} / ETH_ma3: {ETH_ma3:.1f} / ADA_ma3: {ADA_ma3:.1f} / TRX_ma3: {TRX_ma3:.1f} / MANA_ma3: {MANA_ma3:.1f}")
 print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 time.sleep(1)
+
+KRW_balance = upbit.get_balance("KRW")
+KRW_balance_div = KRW_balance / 5
+
+print(f"KRW Balance Initialized ... OK")
+print(f"KRW_Balance: {KRW_balance:.1f} / KRW_balance_div: {KRW_balance_div:.1f}")
+print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
+time.sleep(1)
+
 print(f"Auto Trade Mode Start ... OK")
 print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 
@@ -127,8 +136,17 @@ while True:
             print(f"{now} Today MA3 Update ... OK")
             print(f"BTC_ma3: {BTC_ma3:.1f} / ETH_ma3: {ETH_ma3:.1f} / ADA_ma3: {ADA_ma3:.1f} / TRX_ma3: {TRX_ma3:.1f} / MANA_ma3: {MANA_ma3:.1f}")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
+            time.sleep(1)
+
+            KRW_balance = upbit.get_balance("KRW")
+            KRW_balance_div = KRW_balance / 5
+
+            print(f"{now} Today KRW Balance Update ... OK")
+            print(f"KRW_Balance: {KRW_balance:.1f} / KRW_balance_div: {KRW_balance_div:.1f}")
+            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
+
             op_mode = True
-            time.sleep(10)      
+            time.sleep(7)      
 
 
         # Now Price (every 1sec)
@@ -137,125 +155,11 @@ while True:
         ADA_price = pyupbit.get_current_price("KRW-ADA")
         TRX_price = pyupbit.get_current_price("KRW-TRX")
         MANA_price = pyupbit.get_current_price("KRW-MANA")
-
-
-
-        # KRW balace -> Divide (every 1sec)
-
-        if BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 5
-
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 4
-
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is True and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 4
-
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and TRX_hold is False and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 4
-
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and TRX_hold is False and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 4
-
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 4
-
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is True and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and TRX_hold is False and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and TRX_hold is True and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and TRX_hold is False and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and TRX_hold is True and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and TRX_hold is False and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and TRX_hold is True and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and TRX_hold is False and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and TRX_hold is False and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 3
-
-        elif BTC_hold is False and ETH_hold is False and ADA_hold is True and TRX_hold is True and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is False and TRX_hold is True and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and TRX_hold is False and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is False and ETH_hold is True and ADA_hold is True and TRX_hold is True and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is False and TRX_hold is True and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and TRX_hold is False and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is True and ETH_hold is False and ADA_hold is True and TRX_hold is True and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and TRX_hold is False and MANA_hold is True:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is True and ETH_hold is True and ADA_hold is False and TRX_hold is True and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        elif BTC_hold is True and ETH_hold is True and ADA_hold is True and TRX_hold is False and MANA_hold is False:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 2
-
-        else:
-            KRW_balance = upbit.get_balance("KRW")
-            KRW_balance_div = KRW_balance / 1
-
-
-
+        
 
         # BTC _ Market Price Buy (every 1sec)
         if op_mode is True and BTC_price is not None and (BTC_target1 <= BTC_price <= BTC_target2) and BTC_hold is False and BTC_price >= BTC_ma3:
-            upbit.buy_market_order("KRW-BTC", KRW_balance_div * 0.9995)
+            upbit.buy_market_order("KRW-BTC", KRW_balance_div * 0.9994)
             print(f"{now} Today BTC Buy ... OK")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             BTC_hold = True
@@ -263,28 +167,28 @@ while True:
 
         # ETH _ Market Price Buy (every 1sec)
         if op_mode is True and ETH_price is not None and (ETH_target1 <= ETH_price <= ETH_target2) and ETH_hold is False and ETH_price >= ETH_ma3:
-           upbit.buy_market_order("KRW-ETH", KRW_balance_div * 0.9995)
+           upbit.buy_market_order("KRW-ETH", KRW_balance_div * 0.9994)
            print(f"{now} Today ETH Buy ... OK")
            print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
            ETH_hold = True
 
         # ADA _ Market Price Buy (every 1sec)
         if op_mode is True and ADA_price is not None and (ADA_target1 <= ADA_price <= ADA_target2) and ADA_hold is False and ADA_price >= ADA_ma3:
-            upbit.buy_market_order("KRW-ADA", KRW_balance_div * 0.9995)
+            upbit.buy_market_order("KRW-ADA", KRW_balance_div * 0.9994)
             print(f"{now} Today ADA Buy ... OK")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             ADA_hold = True
 
         # TRX _ Market Price Buy (every 1sec)
         if op_mode is True and TRX_price is not None and (TRX_target1 <= TRX_price <= TRX_target2) and TRX_hold is False and TRX_price >= TRX_ma3:
-            upbit.buy_market_order("KRW-TRX", KRW_balance_div * 0.9995)
+            upbit.buy_market_order("KRW-TRX", KRW_balance_div * 0.9994)
             print(f"{now} Today TRX Buy ... OK")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             TRX_hold = True
 
         # MANA _ Market Price Buy (every 1sec)
         if op_mode is True and MANA_price is not None and (MANA_target1 <= MANA_price <= MANA_target2) and MANA_hold is False and MANA_price >= MANA_ma3:
-            upbit.buy_market_order("KRW-MANA", KRW_balance_div * 0.9995)
+            upbit.buy_market_order("KRW-MANA", KRW_balance_div * 0.9994)
             print(f"{now} Today MANA Buy ... OK")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
             MANA_hold = True
@@ -296,35 +200,35 @@ while True:
         if now.hour == 8 and now.minute == 49 and (30 <= now.second <=40):
             if op_mode is True and BTC_hold is True:
                 btc_balance = upbit.get_balance("KRW-BTC")
-                upbit.sell_market_order("KRW-BTC", btc_balance * 0.9995)
+                upbit.sell_market_order("KRW-BTC", btc_balance)  # * 0.9995 fee deltete
                 print(f"{now} Today BTC Sell ... OK")
                 print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
                 BTC_hold = False
 
             if op_mode is True and ETH_hold is True:
                 eth_balance = upbit.get_balance("KRW-ETH")
-                upbit.sell_market_order("KRW-ETH", eth_balance * 0.9995)
+                upbit.sell_market_order("KRW-ETH", eth_balance)
                 print(f"{now} Today ETH Sell ... OK")
                 print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
                 ETH_hold = False
 
             if op_mode is True and ADA_hold is True:
                 ada_balance = upbit.get_balance("KRW-ADA")
-                upbit.sell_market_order("KRW-ADA", ada_balance * 0.9995)
+                upbit.sell_market_order("KRW-ADA", ada_balance)
                 print(f"{now} Today ADA Sell ... OK")
                 print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
                 ADA_hold = False
 
             if op_mode is True and TRX_hold is True:
                 trx_balance = upbit.get_balance("KRW-TRX")
-                upbit.sell_market_order("KRW-TRX", trx_balance * 0.9995)
+                upbit.sell_market_order("KRW-TRX", trx_balance)
                 print(f"{now} Today TRX Sell ... OK")
                 print("------------------------------------------------------------------------------------------------------------------------------------------------------")
                 TRX_hold = False
 
             if op_mode is True and MANA_hold is True:
                 mana_balance = upbit.get_balance("KRW-MANA")
-                upbit.sell_market_order("KRW-MANA", mana_balance * 0.9995)
+                upbit.sell_market_order("KRW-MANA", mana_balance)
                 print(f"{now} Today MANA Sell ... OK")
                 print("------------------------------------------------------------------------------------------------------------------------------------------------------")
                 MANA_hold = False
