@@ -38,7 +38,7 @@ def cal_target2(ticker):
 # 3 day Moving Average Calculate Function Defined
 def get_ma3(ticker):
     df = pyupbit.get_ohlcv(ticker, interval="day", count=3)   #3, 5, 10, 15 change
-    ma3 = df['close'].rolling(3).mean().iloc[-1]
+    ma3 = df['open'].rolling(3).mean().iloc[-1]
     return ma3
 
 # initialize
@@ -146,7 +146,7 @@ while True:
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------")
 
             op_mode = True
-            time.sleep(7)      
+            time.sleep(7)
 
 
         # Now Price (every 1sec)
@@ -155,7 +155,7 @@ while True:
         ADA_price = pyupbit.get_current_price("KRW-ADA")
         TRX_price = pyupbit.get_current_price("KRW-TRX")
         MANA_price = pyupbit.get_current_price("KRW-MANA")
-        
+
 
         # BTC _ Market Price Buy (every 1sec)
         if op_mode is True and BTC_price is not None and (BTC_target1 <= BTC_price <= BTC_target2) and BTC_hold is False and BTC_price >= BTC_ma3:
