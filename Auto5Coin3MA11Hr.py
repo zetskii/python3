@@ -38,7 +38,7 @@ def cal_target2(ticker):
 # 3 day Moving Average Calculate Function Defined
 def get_ma3(ticker):
     df = pyupbit.get_daily_ohlcv_from_base(ticker, base=11)   #3, 5, 10, 15 change
-    ma3 = df['close'].rolling(3).mean().iloc[-1]
+    ma3 = df['open'].rolling(3).mean().iloc[-1]
     return ma3
 
 # initialize
@@ -146,7 +146,7 @@ while True:
             print("----------------------------------------------------------------------------------------------------------------------")
 
             op_mode = True
-            time.sleep(7)      
+            time.sleep(7)
 
 
         # Now Price (every 1sec)
