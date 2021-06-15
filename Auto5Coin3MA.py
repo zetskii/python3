@@ -103,8 +103,8 @@ while True:
         # Now Time
         now = datetime.datetime.now()
 
-        # 09:00:20 ~ 09:00:30 target, ma3 Update
-        if now.hour == 9 and now.minute == 0 and (20 <= now.second <= 30):
+        # 09:01:05 ~ 09:01:15 target, ma3 Update
+        if now.hour == 9 and now.minute == 1 and (5 <= now.second <= 15):
             BTC_target1 = cal_target1("KRW-BTC")
             ETH_target1 = cal_target1("KRW-ETH")
             ADA_target1 = cal_target1("KRW-ADA")
