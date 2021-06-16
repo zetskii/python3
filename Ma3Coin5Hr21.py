@@ -17,7 +17,7 @@ print(f"{now} Login ... OK")
 print("----------------------------------------------------------------------------------------------------------------------")
 
 
-# Daily 21:00 --> 3 day Moving Average Calculate Function Defined
+# 3 day Moving Average Calculate Function Defined
 def get_ma3(ticker):
     df = pyupbit.get_daily_ohlcv_from_base(ticker, base=21)  
     
