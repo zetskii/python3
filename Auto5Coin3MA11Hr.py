@@ -37,9 +37,13 @@ def cal_target2(ticker):
 
 # 3 day Moving Average Calculate Function Defined
 def get_ma3(ticker):
-    df = pyupbit.get_daily_ohlcv_from_base(ticker, base=11)   #3, 5, 10, 15 change
-    ma3 = df['open'].rolling(3).mean().iloc[-1]
+    df = pyupbit.get_daily_ohlcv_from_base(ticker, base=11)
+    D_0day = df.iloc[-1]
+    D_1day = df.iloc[-2]
+    D_2day = df.iloc[-3]
+    ma3 = (D_0day['open'] + D_1day['open'] + D_2day['open']) / 3
     return ma3
+
 
 # initialize
 BTC_target1 = cal_target1("KRW-BTC")
