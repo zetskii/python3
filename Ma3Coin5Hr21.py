@@ -19,14 +19,11 @@ print("-------------------------------------------------------------------------
 
 # 3 day Moving Average Calculate Function Defined
 def get_ma3(ticker):
-    df = pyupbit.get_daily_ohlcv_from_base(ticker, base=21)  
-    
+    df = pyupbit.get_daily_ohlcv_from_base(ticker, base=21)
     D_0day = df.iloc[-1]
     D_1day = df.iloc[-2]
     D_2day = df.iloc[-3]
-
     ma3 = (D_0day['open'] + D_1day['open'] + D_2day['open']) / 3
-
     return ma3
 
 
@@ -78,10 +75,8 @@ while True:
 
     try:
 
-
         # Now Time (every 1sec)
         now = datetime.datetime.now()
-
 
         # Now Price (every 1sec)
         BTC_price = pyupbit.get_current_price("KRW-BTC")
@@ -89,7 +84,7 @@ while True:
         ADA_price = pyupbit.get_current_price("KRW-ADA")
         TRX_price = pyupbit.get_current_price("KRW-TRX")
         MANA_price = pyupbit.get_current_price("KRW-MANA")
-
+        time.sleep(1)
 
         # 21:00:45 ~ 21:00:55 MA3 Update
         if now.hour == 21 and now.minute == 0 and (45 <= now.second <= 55):
@@ -157,7 +152,7 @@ while True:
             time.sleep(9)
 
 
-        # 21:01:20 ~ 21:01:30 KRW Balance Update --> Divide
+        # 21:01:20 ~ 21:01:30 KRW Balance Update --> Divide  --> Now Price Update --> BTC > MA3 & Now Price > MA3 --> Market Price Buy
         if now.hour == 21 and now.minute == 1 and (20 <= now.second <= 30):
 
             if BTC_hold is False and ETH_hold is False and ADA_hold is False and TRX_hold is False and MANA_hold is False:
@@ -272,17 +267,20 @@ while True:
             print(f"KRW_Balance: {KRW_balance:.1f} / KRW_balance_div: {KRW_balance_div:.1f}")
             print("----------------------------------------------------------------------------------------------------------------------")
 
-            time.sleep(10)
+            time.sleep(1)
 
-
-        # 21:01:35 ~ 21:01:45 Now Price > MA3 --> Each Ticker Market Price Buy (KRW Divided * 0.9994)
-        if now.hour == 21 and now.minute == 1 and (35 <= now.second <= 45):
+            
+            # Now Price Update
 
             BTC_price = pyupbit.get_current_price("KRW-BTC")
             ETH_price = pyupbit.get_current_price("KRW-ETH")
             ADA_price = pyupbit.get_current_price("KRW-ADA")
             TRX_price = pyupbit.get_current_price("KRW-TRX")
             MANA_price = pyupbit.get_current_price("KRW-MANA")
+
+            print(f"{now} Today Price Update ... OK")
+            print(f"BTC: {BTC_price:.1f} / ETH: {ETH_price:.1f} / ADA: {ADA_price:.1f} / TRX: {TRX_price:.1f} / MANA: {MANA_price:.1f} / ")
+            print("----------------------------------------------------------------------------------------------------------------------")
 
             time.sleep(1)
 
@@ -294,34 +292,34 @@ while True:
                 BTC_hold = True
 
             # ETH _ Market Price Buy
-            if op_mode is True and ETH_price is not None and ETH_hold is False and ETH_price > ETH_ma3:
+            if op_mode is True and ETH_price is not None and ETH_hold is False and ETH_price > ETH_ma3 and BTC_price > BTC_ma3:
                 upbit.buy_market_order("KRW-ETH", KRW_balance_div * 0.9994)
                 print(f"{now} Today ETH Buy ... OK")
                 print("----------------------------------------------------------------------------------------------------------------------")
                 ETH_hold = True
 
             # ADA _ Market Price Buy
-            if op_mode is True and ADA_price is not None and ADA_hold is False and ADA_price > ADA_ma3:
+            if op_mode is True and ADA_price is not None and ADA_hold is False and ADA_price > ADA_ma3 and BTC_price > BTC_ma3:
                 upbit.buy_market_order("KRW-ADA", KRW_balance_div * 0.9994)
                 print(f"{now} Today ADA Buy ... OK")
                 print("----------------------------------------------------------------------------------------------------------------------")
                 ADA_hold = True
 
             # TRX _ Market Price Buy
-            if op_mode is True and TRX_price is not None and TRX_hold is False and TRX_price > TRX_ma3:
+            if op_mode is True and TRX_price is not None and TRX_hold is False and TRX_price > TRX_ma3 and BTC_price > BTC_ma3:
                 upbit.buy_market_order("KRW-TRX", KRW_balance_div * 0.9994)
                 print(f"{now} Today TRX Buy ... OK")
                 print("----------------------------------------------------------------------------------------------------------------------")
                 TRX_hold = True
 
             # MANA _ Market Price Buy
-            if op_mode is True and MANA_price is not None and MANA_hold is False and MANA_price > MANA_ma3:
+            if op_mode is True and MANA_price is not None and MANA_hold is False and MANA_price > MANA_ma3 and BTC_price > BTC_ma3:
                 upbit.buy_market_order("KRW-MANA", KRW_balance_div * 0.9994)
                 print(f"{now} Today MANA Buy ... OK")
                 print("----------------------------------------------------------------------------------------------------------------------")
                 MANA_hold = True
 
-            time.sleep(9)
+            time.sleep(8)
 
         # 1sec Delay
         time.sleep(1)
