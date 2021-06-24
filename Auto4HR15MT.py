@@ -284,37 +284,37 @@ while True:
             time.sleep(0.5)
             
             #  BTC > MT15 & Now Price > MT15 --> Market Price Buy
-            if op_mode is True and ETH_price is not None and BTC_price is not None and ETH_hold is False and ETH_price > ETH_mt15 and BTC_price > BTC_mt15:
+            if op_mode is True and ETH_price is not None and BTC_price is not None and ETH_hold is False and ETH_price > ETH_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-ETH", KRW_balance_div * 0.9994)
                 print(f"{now} Today ETH Buy ... OK")
                 print("-------------------------------------------------------------------------------------------------------")
                 ETH_hold = True
 
-            if op_mode is True and ADA_price is not None and BTC_price is not None and ADA_hold is False and ADA_price > ADA_mt15 and BTC_price > BTC_mt15:
+            if op_mode is True and ADA_price is not None and BTC_price is not None and ADA_hold is False and ADA_price > ADA_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-ADA", KRW_balance_div * 0.9994)
                 print(f"{now} Today ADA Buy ... OK")
                 print("-------------------------------------------------------------------------------------------------------")
                 ADA_hold = True
 
-            if op_mode is True and TRX_price is not None and BTC_price is not None and TRX_hold is False and TRX_price > TRX_mt15 and BTC_price > BTC_mt15:
+            if op_mode is True and TRX_price is not None and BTC_price is not None and TRX_hold is False and TRX_price > TRX_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-TRX", KRW_balance_div * 0.9994)
                 print(f"{now} Today TRX Buy ... OK")
                 print("-------------------------------------------------------------------------------------------------------")
                 TRX_hold = True
 
-            if op_mode is True and CHZ_price is not None and BTC_price is not None and CHZ_hold is False and CHZ_price > CHZ_mt15 and BTC_price > BTC_mt15:
+            if op_mode is True and CHZ_price is not None and BTC_price is not None and CHZ_hold is False and CHZ_price > CHZ_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-CHZ", KRW_balance_div * 0.9994)
                 print(f"{now} Today CHZ Buy ... OK")
                 print("-------------------------------------------------------------------------------------------------------")
                 CHZ_hold = True
 
-            if op_mode is True and MANA_price is not None and BTC_price is not None and MANA_hold is False and MANA_price > MANA_mt15 and BTC_price > BTC_mt15:
+            if op_mode is True and MANA_price is not None and BTC_price is not None and MANA_hold is False and MANA_price > MANA_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-MANA", KRW_balance_div * 0.9994)
                 print(f"{now} Today MANA Buy ... OK")
                 print("-------------------------------------------------------------------------------------------------------")
                 MANA_hold = True
 
-            time.sleep(8)
+            time.sleep(10)
 
         # 2sec Delay
         time.sleep(2)
