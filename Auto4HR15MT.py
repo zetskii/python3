@@ -82,7 +82,7 @@ KRW_balance_div = KRW_balance / 5
 
 print("KRW Balance Initialized ... OK")
 print(f"Hold Status: ETH {ETH_hold} / ADA {ADA_hold} / TRX {TRX_hold} / CHZ {CHZ_hold} / MANA {MANA_hold}")
-print(f"KRW_Balance: {KRW_balance:.1f} / KRW_balance_div: {KRW_balance_div:.1f}")
+print(f"KRW_Balance: {KRW_balance:.1f} / KRW_balance_div: {KRW_balance_div:.1f} (Default / 5)")
 print("------------------------------------------------------------------------------------------------")
 time.sleep(0.5)
 
