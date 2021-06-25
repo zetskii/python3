@@ -48,8 +48,8 @@ def get_mt15(ticker):
 op_mode = True
 
 ETH_hold = False
-ADA_hold = False
-TRX_hold = False
+ADA_hold = True
+TRX_hold = True
 CHZ_hold = False
 MANA_hold = False
 
