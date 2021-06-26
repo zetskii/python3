@@ -11,9 +11,9 @@ now = datetime.datetime.now()
 # Login
 upbit = pyupbit.Upbit(access, secret)
 
-print("------------------------------------------------------------------------------------------------")
+print("----------------------------------------------------------------------------")
 print(f"{now} Login ... OK")
-print("------------------------------------------------------------------------------------------------")
+print("----------------------------------------------------------------------------")
 
 
 # 4hr 15MT Calculate Function Defined
@@ -48,8 +48,8 @@ def get_mt15(ticker):
 op_mode = True
 
 ETH_hold = False
-ADA_hold = True
-TRX_hold = True
+ADA_hold = False
+TRX_hold = False
 CHZ_hold = False
 MANA_hold = False
 
@@ -61,8 +61,8 @@ CHZ_price = pyupbit.get_current_price("KRW-CHZ")
 MANA_price = pyupbit.get_current_price("KRW-MANA")
 
 print("Now Price Initialized ... OK")
-print(f"Now: BTC {BTC_price} / ETH {ETH_price} / ADA {ADA_price} / TRX {TRX_price} / CHZ {CHZ_price} / MANA {MANA_price}")
-print("------------------------------------------------------------------------------------------------")
+print(f"Now: BTC {BTC_price:.0f}, ETH {ETH_price:.0f}, ADA {ADA_price:.0f}, TRX {TRX_price:.1f}, CHZ {CHZ_price:.0f}, MANA {MANA_price:.0f}")
+print("----------------------------------------------------------------------------")
 time.sleep(0.5)
 
 BTC_mt15 = get_mt15("KRW-BTC")
@@ -73,8 +73,8 @@ CHZ_mt15 = get_mt15("KRW-CHZ")
 MANA_mt15 = get_mt15("KRW-MANA")
 
 print("MT15 Initialized ... OK")
-print(f"MT15: BTC {BTC_mt15:.1f} / ETH {ETH_mt15:.1f} / ADA {ADA_mt15:.1f} / TRX {TRX_mt15:.1f} / CHZ {CHZ_mt15:.1f} / MANA {MANA_mt15:.1f}")
-print("------------------------------------------------------------------------------------------------")
+print(f"MT15: BTC {BTC_mt15:.0f}, ETH {ETH_mt15:.0f}, ADA {ADA_mt15:.0f}, TRX {TRX_mt15:.1f}, CHZ {CHZ_mt15:.0f}, MANA {MANA_mt15:.0f}")
+print("----------------------------------------------------------------------------")
 time.sleep(0.5)
 
 KRW_balance = upbit.get_balance("KRW")
@@ -83,11 +83,11 @@ KRW_balance_div = KRW_balance / 5
 print("KRW Balance Initialized ... OK")
 print(f"Hold Status: ETH {ETH_hold} / ADA {ADA_hold} / TRX {TRX_hold} / CHZ {CHZ_hold} / MANA {MANA_hold}")
 print(f"KRW_Balance: {KRW_balance:.1f} / KRW_balance_div: {KRW_balance_div:.1f} (Default / 5)")
-print("------------------------------------------------------------------------------------------------")
+print("############################################################################")
 time.sleep(0.5)
 
 print("[4hr 15MT Strategy] Auto Trade Start ... OK")
-print("------------------------------------------------------------------------------------------------")
+print("############################################################################")
 
 
 # Auto Trade Start (2sec Loop)
@@ -98,7 +98,7 @@ while True:
         # Now Time
         now = datetime.datetime.now()
 
-        ### Daily 01:00, 05:00, 09:00, 13:00, 17:00, 21:00 Start ###############################################################################################
+        ### Daily 01:00, 05:00, 09:00, 13:00, 17:00, 21:00 Start ###########################################################################################
 
         # MT15 Update -> Now Price Update -> Sell -> KRW Update -> Buy
         if (now.hour == 1 or now.hour == 5 or now.hour == 9 or now.hour == 13 or now.hour == 17 or now.hour == 21) and now.minute == 0 and (7 <= now.second <= 17):
@@ -114,8 +114,8 @@ while True:
             op_mode = True
 
             print(f"{now} MT15 Update ... OK")
-            print(f"MT15: BTC {BTC_mt15:.1f} / ETH {ETH_mt15:.1f} / ADA {ADA_mt15:.1f} / TRX {TRX_mt15:.1f} / CHZ {CHZ_mt15:.1f} / MANA {MANA_mt15:.1f}")
-            print("------------------------------------------------------------------------------------------------")
+            print(f"MT15: BTC {BTC_mt15:.0f}, ETH {ETH_mt15:.0f}, ADA {ADA_mt15:.0f}, TRX {TRX_mt15:.1f}, CHZ {CHZ_mt15:.0f}, MANA {MANA_mt15:.0f}")
+            print("----------------------------------------------------------------------------")
             time.sleep(0.5)
 
             # Now Price Update
@@ -127,8 +127,8 @@ while True:
             MANA_price = pyupbit.get_current_price("KRW-MANA")
 
             print(f"{now} Now Price Update ... OK")
-            print(f"Now: BTC {BTC_price} / ETH {ETH_price} / ADA {ADA_price} / TRX {TRX_price} / CHZ {CHZ_price} / MANA {MANA_price}")
-            print("------------------------------------------------------------------------------------------------")
+            print(f"Now: BTC {BTC_price}, ETH {ETH_price}, ADA {ADA_price}, TRX {TRX_price}, CHZ {CHZ_price}, MANA {MANA_price}")
+            print("----------------------------------------------------------------------------")
             time.sleep(0.5)
 
             # Now Price <= MT15 --> Sell
@@ -136,36 +136,36 @@ while True:
                 eth_balance = upbit.get_balance("KRW-ETH")
                 upbit.sell_market_order("KRW-ETH", eth_balance)
                 ETH_hold = False
-                print(f"{now} ETH Sell ... OK / ETH_hold : {ETH_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} ETH Sell ... OK / {ETH_price} / ETH_hold : {ETH_hold}")
+                print("----------------------------------------------------------------------------")
 
             if op_mode is True and ADA_hold is True and ADA_price <= ADA_mt15:
                 ada_balance = upbit.get_balance("KRW-ADA")
                 upbit.sell_market_order("KRW-ADA", ada_balance)
                 ADA_hold = False
-                print(f"{now} ADA Sell ... OK / ADA_hold : {ADA_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} ADA Sell ... OK / {ADA_price} / ADA_hold : {ADA_hold}")
+                print("----------------------------------------------------------------------------")
 
             if op_mode is True and TRX_hold is True and TRX_price <= TRX_mt15:
                 trx_balance = upbit.get_balance("KRW-TRX")
                 upbit.sell_market_order("KRW-TRX", trx_balance)
                 TRX_hold = False
-                print(f"{now} TRX Sell ... OK / TRX_hold : {TRX_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} TRX Sell ... OK / {TRX_price} / TRX_hold : {TRX_hold}")
+                print("----------------------------------------------------------------------------")
 
             if op_mode is True and CHZ_hold is True and CHZ_price <= CHZ_mt15:
                 chz_balance = upbit.get_balance("KRW-CHZ")
                 upbit.sell_market_order("KRW-CHZ", chz_balance)
                 CHZ_hold = False
-                print(f"{now} CHZ Sell ... OK / CHZ_hold : {CHZ_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} CHZ Sell ... OK / {CHZ_price} / CHZ_hold : {CHZ_hold}")
+                print("----------------------------------------------------------------------------")
 
             if op_mode is True and MANA_hold is True and MANA_price <= MANA_mt15:
                 mana_balance = upbit.get_balance("KRW-MANA")
                 upbit.sell_market_order("KRW-MANA", mana_balance)
                 MANA_hold = False
-                print(f"{now} MANA Sell ... OK / MANA_hold : {MANA_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} MANA Sell ... OK / {MANA_price} / MANA_hold : {MANA_hold}")
+                print("----------------------------------------------------------------------------")
 
             time.sleep(0.5)
 
@@ -302,43 +302,43 @@ while True:
             print(f"{now} KRW Balance Update & Divide ... OK")
             print(f"Hold Status: ETH {ETH_hold} / ADA {ADA_hold} / TRX {TRX_hold} / CHZ {CHZ_hold} / MANA {MANA_hold}")
             print(f"KRW_Balance: {KRW_balance:.1f} / KRW_balance_div: {KRW_balance_div:.1f}")
-            print("------------------------------------------------------------------------------------------------")
+            print("----------------------------------------------------------------------------")
             time.sleep(0.5)
 
             #  BTC > MT15 & Now Price > MT15 --> Market Price Buy
             if op_mode is True and ETH_price is not None and BTC_price is not None and ETH_hold is False and ETH_price > ETH_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-ETH", KRW_balance_div * 0.9994)
                 ETH_hold = True
-                print(f"{now} ETH Buy ... OK / ETH hold: {ETH_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} ETH Buy ... OK / {ETH_price} / ETH hold: {ETH_hold}")
+                print("----------------------------------------------------------------------------")
 
             if op_mode is True and ADA_price is not None and BTC_price is not None and ADA_hold is False and ADA_price > ADA_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-ADA", KRW_balance_div * 0.9994)
                 ADA_hold = True
-                print(f"{now} ADA Buy ... OK / ADA hold: {ADA_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} ADA Buy ... OK / {ADA_price} / ADA hold: {ADA_hold}")
+                print("----------------------------------------------------------------------------")
 
             if op_mode is True and TRX_price is not None and BTC_price is not None and TRX_hold is False and TRX_price > TRX_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-TRX", KRW_balance_div * 0.9994)
                 TRX_hold = True
-                print(f"{now} TRX Buy ... OK / TRX hold: {TRX_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} TRX Buy ... OK / {TRX_price} / TRX hold: {TRX_hold}")
+                print("----------------------------------------------------------------------------")
 
             if op_mode is True and CHZ_price is not None and BTC_price is not None and CHZ_hold is False and CHZ_price > CHZ_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-CHZ", KRW_balance_div * 0.9994)
                 CHZ_hold = True
-                print(f"{now} CHZ Buy ... OK / CHZ hold: {CHZ_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} CHZ Buy ... OK / {CHZ_price} / CHZ hold: {CHZ_hold}")
+                print("----------------------------------------------------------------------------")
 
             if op_mode is True and MANA_price is not None and BTC_price is not None and MANA_hold is False and MANA_price > MANA_mt15 and BTC_price > BTC_mt15 and KRW_balance_div > 5100:
                 upbit.buy_market_order("KRW-MANA", KRW_balance_div * 0.9994)
                 MANA_hold = True
-                print(f"{now} MANA Buy ... OK / MANA hold: {MANA_hold}")
-                print("------------------------------------------------------------------------------------------------")
+                print(f"{now} MANA Buy ... OK / {MANA_price} / MANA hold: {MANA_hold}")
+                print("############################################################################")
 
             time.sleep(10)
 
-        # 1sec Now Price Update & Delay
+        # Now Price Update & Delay
         BTC_price = pyupbit.get_current_price("KRW-BTC")
         ETH_price = pyupbit.get_current_price("KRW-ETH")
         ADA_price = pyupbit.get_current_price("KRW-ADA")
@@ -350,33 +350,33 @@ while True:
 
         time.sleep(1)
 
-        # 1sec Coin Balance Check & hold Update
+        # Coin Balance Check --> hold Update & Delay
         ETH_balance = upbit.get_balance(ticker="KRW-ETH")
-        if ETH_balance is not None and ETH_balance != 0:
+        if ETH_balance != 0:
             ETH_hold = True
         else:
             ETH_hold = False
         
         ADA_balance = upbit.get_balance(ticker="KRW-ADA")
-        if ADA_balance is not None and ADA_balance != 0:
+        if ADA_balance != 0:
             ADA_hold = True
         else:
             ADA_hold = False
 
         TRX_balance = upbit.get_balance(ticker="KRW-TRX")
-        if TRX_balance is not None and TRX_balance != 0:
+        if TRX_balance != 0:
             TRX_hold = True
         else:
             TRX_hold = False
 
         CHZ_balance = upbit.get_balance(ticker="KRW-CHZ")
-        if CHZ_balance is not None and CHZ_balance != 0:
+        if CHZ_balance != 0:
             CHZ_hold = True
         else:
             CHZ_hold = False
 
         MANA_balance = upbit.get_balance(ticker="KRW-MANA")
-        if MANA_balance is not None and MANA_balance != 0:
+        if MANA_balance != 0:
             MANA_hold = True
         else:
             MANA_hold = False
