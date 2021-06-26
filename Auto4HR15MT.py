@@ -127,7 +127,7 @@ while True:
             MANA_price = pyupbit.get_current_price("KRW-MANA")
 
             print(f"{now} Now Price Update ... OK")
-            print(f"Now: BTC {BTC_price}, ETH {ETH_price}, ADA {ADA_price}, TRX {TRX_price}, CHZ {CHZ_price}, MANA {MANA_price}")
+            print(f"Now: BTC {BTC_price:.0f}, ETH {ETH_price:.0f}, ADA {ADA_price:.0f}, TRX {TRX_price:.1f}, CHZ {CHZ_price:.0f}, MANA {MANA_price:.0f}")
             print("----------------------------------------------------------------------------")
             time.sleep(0.5)
 
