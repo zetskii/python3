@@ -302,7 +302,7 @@ while True:
             print(f"{now} KRW Balance Update & Divide ... OK")
             print(f"Hold Status: ETH {ETH_hold} / ADA {ADA_hold} / TRX {TRX_hold} / CHZ {CHZ_hold} / MANA {MANA_hold}")
             print(f"KRW_Balance: {KRW_balance:.1f} / KRW_balance_div: {KRW_balance_div:.1f}")
-            print("----------------------------------------------------------------------------")
+            print("############################################################################")
             time.sleep(0.5)
 
             #  BTC > MT15 & Now Price > MT15 --> Market Price Buy
